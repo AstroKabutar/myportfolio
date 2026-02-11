@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      color: lime;
+      background-color: rgb(255, 255, 255);
+      font-size: xx-large;
+      overflow-x: hidden;
+      margin: 0;
+      font-family: 'Iosevka Aile', sans-serif;
+    }
+
+    .page-layout {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4rem;
+      max-width: 1700px;
+      margin: 0 auto 0 0;
+      padding: 2rem 2rem 2rem 1.5rem;
+      align-items: flex-start;
+    }
+
+    /* Left pane: writing takes 60–70% of this */
+    .left-pane {
+      flex: 0 1 38%;
+      min-width: 280px;
+    }
+
+    .writing-column {
+      width: 68%;
+      color: rgba(0, 0, 0, 1);
+    }
+
+    .writing-column h2 {
+      color: rgba(0, 0, 0, 1);
+      text-shadow: 1px 1px 13px;
+      font-size: 24px;
+      margin: 0 0 1rem 0;
+    }
+
+    .writing-item {
+      margin-bottom: 1.25rem;
+      font-size: 18px;
+      line-height: 1.55;
+      color: rgba(0, 0, 0, 1);
+    }
+
+    .writing-item strong {
+      font-weight: 700;
+      font-size: 30px;
+    }
+
+    .writing-column .writing-item a {
+      text-decoration: none;
+      color: rgb(0, 0, 0);
+      font-weight: 100;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      transition: text-shadow 0.25s ease;
+    }
+
+    .writing-column .writing-item a:hover {
+      font-weight: 700;
+      text-shadow:
+        0 0 6px rgba(220, 38, 38, 0.9),
+        0 0 10px rgba(185, 28, 28, 0.7),
+        0 0 14px rgba(126, 34, 211, 0.6),
+        0 0 18px rgba(59, 130, 246, 0.8),
+        0 0 22px rgba(37, 99, 235, 0.6);
+    }
+
+    .writing-column .writing-item a .writing-arrow {
+      width: 14px;
+      height: 14px;
+      flex-shrink: 0;
+      transition: filter 0.25s ease;
+    }
+
+    .writing-column .writing-item a:hover .writing-arrow {
+      filter: drop-shadow(0 0 4px rgba(220, 38, 38, 0.8)) drop-shadow(0 0 6px rgba(59, 130, 246, 0.8));
+    }
+
+    /* Main body column */
+    .main-column {
+      flex: 1 1 400px;
+      min-width: 0;
+    }
+
+    .main-column .heading {
+      color: rgba(0, 0, 0, 1);
+      text-shadow: 1px 1px 13px;
+      font-size: 40px;
+      margin: 0 0 0.5rem 0;
+    }
+
+    .main-column .intro {
+      color: rgba(0, 0, 0, 1);
+      font-size: 18px;
+      margin: 0 0 0.5rem 0;
+      line-height: 1.4;
+    }
+
+    .main-column .section-title {
+      color: rgba(0, 0, 0, 1);
+      text-shadow: 1px 1px 13px;
+      font-size: 20px;
+      margin: 1rem 0 0.9rem 0;
+    }
+
+    .main-column .project-name {
+      font-size: 18px;
+      margin: 0.25rem 0 0 0;
+      color: rgb(0, 0, 0);
+      font-weight: 700;
+      position: relative;
+      padding-left: 1.2em;
+    }
+
+    .main-column .project-name::before {
+      content: "·";
+      position: absolute;
+      left: 0;
+      top: -0.05em;
+      color: rgb(0, 0, 0);
+      font-weight: 1000;
+      font-size: 1.25em;
+      line-height: 1;
+    }
+
+    .main-column a {
+      text-decoration: none;
+      color: rgb(0, 0, 0);
+      font-weight: 100;
+      font-size: 18px;
+    }
+
+    .main-column a:hover {
+      font-weight: 700;
+    }
+
+    .project-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .project-link .writing-arrow {
+      width: 14px;
+      height: 14px;
+      flex-shrink: 0;
+      transition: filter 0.25s ease, stroke 0.25s ease;
+    }
+
+    .project-link:hover .project-link-text {
+      background: linear-gradient(90deg, #92400e, #4d7c0f);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .project-link:hover .writing-arrow {
+      stroke: #4d7c0f;
+      filter: drop-shadow(0 0 4px rgba(146, 64, 14, 0.7)) drop-shadow(0 0 6px rgba(77, 124, 15, 0.7));
+    }
+
+    /* Photo – style kept intact */
+    .profile-photo {
+      display: block;
+      width: 30%;
+      min-width: 240px;
+      height: auto;
+      border-radius: 9999px;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+      margin-bottom: 0.5rem;
+      transform: translateX(0px);
+    }
+
+    /* Footer – socials unchanged */
+    .position-footer {
+      width: 100%;
+      flex-basis: 100%;
+      margin-top: 2rem;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: center;
+      gap: 3rem;
+    }
+
+    .position-footer a {
+      padding: 0.5rem;
+      color: #6b7280;
+      transition: color 0.2s;
+    }
+
+    .position-footer a:hover {
+      color: #374151;
+    }
+
+    .position-footer svg {
+      width: 24px;
+      height: 24px;
+      display: block;
+    }
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Iosevka+Aile&display=swap" rel="stylesheet">
+  <title>Shahin Sheikh</title>
+</head>
+
+<body>
+  <div class="page-layout">
+    <!-- Writing section – parallel left, 60–70% of left pane -->
+    <aside class="left-pane">
+      <div class="writing-column">
+        <h2 style="font-size: 40px; font-weight: 700;">My Writings</h2><br><br><br>
+        <div class="writing-item">
+          <strong><a href="https://medium.com/@shahin.sheikh1337" target="_blank" rel="noopener noreferrer" style="font-weight: 200;">Medium<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="writing-arrow"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></a></strong><br>
+          In Medium I post about the current ongoing tech challenges I face, learn and overcome. Also it is not limited to tech.
+        </div><br><br><br>
+        <div class="writing-item">
+          <strong><a href="https://dev.to/shahin1337" target="_blank" rel="noopener noreferrer" style="font-weight: 200;">Dev<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="writing-arrow"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></a></strong><br>
+          Here I post about my projects that I did and it has explanations of why behind it with in-depth explanations.
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main body -->
+    <main class="main-column">
+      <img
+        class="profile-photo"
+        src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwallpapercave.com%2Fwp%2Fwp870455.jpg&f=1&nofb=1&ipt=697cf87b922ac07a9eb2e48cd9f59d45d10badb57f4a3a1c741d6ab8e876d18c"
+        alt="My photo"
+      ><br><br>
+      <h1 class="heading">I'm Shahin.</h1><br>
+      <p class="intro">I'm an AWS Certified Cloud Engineer skilled in AWS DevOps, cloud Architecture, Microservices, automation, modernisation and serverless along with security.</p><br>
+
+      <h2 class="section-title" style="font-size: 24px; font-weight: 700;">Projects</h2>
+      <p class="project-name">Solo Leveling</p>
+      <p class="intro">A simple task tracker which gamifies the task and rewards XP based on how important the task is.</p>
+      <p class="intro">
+        <a class="project-link" href="https://dev.to/shahin1337/how-i-deployed-my-first-project-for-my-devops-portfolio-introduction-55h1" target="_blank" rel="noopener noreferrer"><span class="project-link-text">Here is the link to my dev.to where I wrote a series of articles about how I pulled this off.</span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="writing-arrow"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></a>
+      </p>
+    </main>
+
+    <!-- Socials – LinkedIn, mail, GitHub unchanged -->
+    <section class="position-footer">
+      <footer class="footer-inner">
+        <a href="https://www.linkedin.com/in/shahin-sheikh-9999a6204/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+            <rect width="4" height="12" x="2" y="9"></rect>
+            <circle cx="4" cy="4" r="2"></circle>
+          </svg>
+        </a>
+        <a href="mailto:shahin.sheikh1337@proton.me" target="_blank" rel="noopener noreferrer" aria-label="Email">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+            <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+          </svg>
+        </a>
+        <a href="https://github.com/AstroKabutar" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+          </svg>
+        </a>
+      </footer>
+    </section>
+  </div>
+</body>
+</html>
