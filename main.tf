@@ -24,8 +24,9 @@ module "s3_bucket" {
         "Purpose" = "Portfolio Website"
     }
 
-    # ability to attach public policies define by user
+    # ability to attach public policies define by user and allow public policy to be attached
     attach_public_policy = true
+    block_public_policy = false
 
     versioning = {
         enabled = true
