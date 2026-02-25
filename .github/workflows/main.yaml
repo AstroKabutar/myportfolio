@@ -18,7 +18,5 @@ jobs:
         aws-region: ${{ vars.region }}
 
     - name: Push index.html to S3 Bucket
-      run: aws s3 cp index.html s3://${{ secrets.BUCKET_NAME }}/index.html
-
-    - name: Push error.html to S3 Bucket
-      run: aws s3 cp error.html s3://${{ secrets.BUCKET_NAME }}/error.html
+      run: bash update-portfolio.sh
+      shell: bash

@@ -1,3 +1,5 @@
 /launch.sh
 /.terraform/*
 /me*
+/.terraform.*
+/terraform.*
