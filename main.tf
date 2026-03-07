@@ -21,7 +21,7 @@ module "s3_bucket" {
     force_destroy = true
 
     tags = {
-        "Purpose" = "Portfolio Website"
+        "Project" = "portfoliowebsite"
     }
 
     # ability to attach public policies define by user and allow public policy to be attached
