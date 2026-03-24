@@ -1,26 +1,14 @@
 #! /bin/bash
 
-upload=""
+files_changed=("index.html" "photography.html" "project.html" "src/css/index.css" "src/css/project.css" "src/css/photography.css" "src/images/me.jpg" "src/js/index.js" 
+"src/js/photography.js" "src/js/project.js")
 
+for file in "${files_changed[@]}"; do
+    if [ -f "$file" ]; then
+        echo "Uploading $file"
+        aws s3 cp $file s3://${{ secrets.BUCKET_NAME }}/$file
+        echo "Uploaded $file"
+    fi
+done
 
-if [ "$upload" == "index" ]; then
-    echo "Uploading index.html"
-    aws s3 cp index.html s3://${{ secrets.BUCKET_NAME }}/index.html
-    echo "Uploaded"
-fi
-
-if [ "$upload" == "error" ]; then
-    echo "Uploading error.html"
-    aws s3 cp error.html s3://${{ secrets.BUCKET_NAME }}/error.html
-    echo "Uploaded"
-fi
-
-if [ "$upload" == "image" ]; then
-    echo "Uploading me.jpg"
-    aws s3 cp me.jpg s3://${{ secrets.BUCKET_NAME }}/error.html
-    echo "Uploaded"
-fi
-
-if [ "$upload" == "" ]; then
-    echo "No files to upload"
-fi
+echo "Portfolio successfully updated"

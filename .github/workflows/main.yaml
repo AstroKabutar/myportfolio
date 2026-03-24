@@ -15,8 +15,8 @@ jobs:
       with:
         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        aws-region: ${{ vars.region }}
+        aws-region: ${{ vars.REGION }}
 
-    - name: Push index.html to S3 Bucket
+    - name: Update Portfolio
       run: bash update-portfolio.sh
       shell: bash
