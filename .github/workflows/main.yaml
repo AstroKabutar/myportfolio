@@ -18,5 +18,6 @@ jobs:
         aws-region: ${{ vars.REGION }}
 
     - name: Update Portfolio
+      env: BUCKET_NAME: ${{ secrets.BUCKET_NAME }}
       run: bash update-portfolio.sh
       shell: bash
