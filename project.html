@@ -1,1 +1,66 @@
-<h1>This is project.html page.</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Projects</title>
+  <link rel="stylesheet" href="src/css/project.css" />
+</head>
+<body>
+  <main class="projects-wrapper">
+    <h1 class="projects-title">Projects</h1>
+
+    <section class="projects-grid">
+      <!-- Customize image path, title, and description below -->
+      <article class="project-card">
+        <img class="project-thumb" src="src/project/videoconduit.jpg" alt="Videoconduit thumbnail" />
+        <div>
+          <h2 class="project-name">Videoconduit</h2>
+          <p class="project-desc">I still remember how I used to scrape the web for software or free online video convertion tools. All are behind a paywall except few.
+            So I thought of making my own tool as my another cloud engineering project. This one for now extracts audio in mp3 from any video and changes the resolution to
+            480p, 720p and 1080p and sends download link to users email address instead of keeping the user on the website.<br>
+            Here is the live link to the project: <a href="https://videoconduit.zita.click/" target="_blank">Videoconduit website</a><br>
+            Github Repository: <a href="https://github.com/AstroKabutar/videoconduit" target="_blank">Videoconduit Github Repository</a><br>
+            A detailed article is coming soon...
+          </p>
+        </div>
+      </article>
+
+      <article class="project-card">
+        <img class="project-thumb" src="src/project/my-portfolio-website.jpg" alt="My Portfolio Website thumbnail" />
+        <div>
+          <h2 class="project-name">My Portfolio Website</h2>
+          <p class="project-desc">This website is entirely serverless and highly scalable and globally available thanks to Cloudfront that is. <br>
+            This is the link to the project repository: <a href="https://github.com/AstroKabutar/myportfolio" target="_blank">My Portfolio Website</a><br>
+            I wrote two articles about this project. <a href="https://www.linkedin.com/pulse/my-portfolio-architecture-shahin-sheikh-8xcpf" target="_blank">Very Short article in linkedin</a><br>
+            A detailed article is coming soon...
+          </p>
+        </div>
+      </article>
+
+      <article class="project-card">
+        <img class="project-thumb" src="src/project/SaaS.jpg" alt="SaaS" />
+        <div>
+          <h2 class="project-name">RFP</h2>
+          <p class="project-desc">comming soon...</p>
+        </div>
+      </article>
+
+      <article class="project-card">
+        <img class="project-thumb" src="src/project/sololeveling.jpg" alt="SoloLeveling thumbnail" />
+        <div>
+          <h2 class="project-name">SoloLeveling</h2>
+          <p class="project-desc">This is a simple task tracker app built purely on C++ with Crow framework
+            and I used SQL for the database. Used containerization technologies like Docker and Kubernetes.
+            This was my very first cloud engineering project and an official testament for me to actually
+            how messy the groundwork can become. Above all my bad decisions I made during the project development.<br>
+            Here is the link to the project repository: <a href="https://github.com/AstroKabutar/SoloLeveling" target="_blank">SoloLeveling Github Repository</a><br>
+            Here is the link to the article I wrote about the project: <a href="https://dev.to/shahin1337/how-i-deployed-my-first-project-for-my-devops-portfolio-introduction-55h1" target="_blank">Article at Dev.to</a><br>
+          </p>
+        </div>
+      </article>
+    </section>
+  </main>
+  <script src="src/js/project.obf.js"></script>
+</body>
+</html>

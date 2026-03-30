@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Photography Gallery</title>
+  <link href="src/css/photography.css" rel="stylesheet">
+</head>
+<body>
+  <main class="gallery-page">
+    <header class="gallery-header">
+      <a class="back-link" href="photography.html">&#8592; Back to categories</a>
+      <h1 id="galleryTitle">Gallery</h1>
+      <p id="galleryMeta"></p>
+    </header>
+
+    <section id="photoGrid" class="photo-grid" aria-label="Photo gallery"></section>
+  </main>
+
+  <div id="lightbox" class="lightbox" hidden aria-hidden="true">
+    <button id="lightboxClose" class="lightbox-close" type="button" aria-label="Close image preview">&times;</button>
+    <img id="lightboxImage" class="lightbox-image" src="" alt="">
+  </div>
+
+  <script src="src/js/photography.obf.js"></script>
+</body>
+</html>

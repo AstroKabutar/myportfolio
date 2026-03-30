@@ -3,3 +3,4 @@
 /me*
 /.terraform.*
 /terraform.*
+/src/clicks/*
