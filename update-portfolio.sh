@@ -1,6 +1,6 @@
 #! /bin/bash
 
-files_changed=("project.html")
+files_changed=("")
 
 for file in "${files_changed[@]}"; do
     if [ -f "$file" ]; then
