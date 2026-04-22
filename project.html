@@ -10,11 +10,9 @@
   <main class="projects-wrapper">
     <h1 class="projects-title">Projects</h1>
 
-    <section class="projects-grid">
-      <!-- Customize image path, title, and description below -->
-      <article class="project-card">
-        <img class="project-thumb" src="src/project/videoconduit.jpg" alt="Videoconduit thumbnail" />
-        <div>
+    <div class="projects-list" role="list">
+      <article class="project-row project-row--inline-video" role="listitem">
+        <div class="project-body">
           <h2 class="project-name">Videoconduit</h2>
           <p class="project-desc">I still remember how I used to scrape the web for software or free online video convertion tools. All are behind a paywall except few.
             So I thought of making my own tool as my another cloud engineering project. This one for now extracts audio in mp3 from any video and changes the resolution to
@@ -22,13 +20,31 @@
             Here is the live link to the project: <a href="https://videoconduit.zita.click/" target="_blank">Videoconduit website</a><br>
             Github Repository: <a href="https://github.com/AstroKabutar/videoconduit" target="_blank">Videoconduit Github Repository</a><br>
             I wrote a detailed article on medium about this project: <a href="https://medium.com/@shahin.sheikh1337/my-own-video-conversion-application-videoconduit-b6cfa22ab3b0" target="_blank">Medium article</a><br>
+            Below is the walkthrough of the project.
           </p>
+        </div>
+        <div class="project-media project-media--inline-video">
+          <div class="project-video-frame">
+            <video
+              class="project-walkthrough-video"
+              width="800"
+              height="400"
+              controls
+              playsinline
+              preload="metadata"
+            >
+              <source src="src/walkthrough/Videoconduit.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          <span class="project-media-caption">NOTE: I have put additional safeguards such that I can only use it. I dont want to rack up my cloud bill.</span>
         </div>
       </article>
 
-      <article class="project-card">
-        <img class="project-thumb" src="src/project/my-portfolio-website.jpg" alt="My Portfolio Website thumbnail" />
-        <div>
+      <hr class="project-divider" aria-hidden="true" />
+
+      <article class="project-row" role="listitem">
+        <div class="project-body">
           <h2 class="project-name">My Portfolio Website</h2>
           <p class="project-desc">This website is entirely serverless and highly scalable and globally available thanks to Cloudfront that is. <br>
             This is the link to the project repository: <a href="https://github.com/AstroKabutar/myportfolio" target="_blank">My Portfolio Website</a><br>
@@ -37,17 +53,19 @@
         </div>
       </article>
 
-      <article class="project-card">
-        <img class="project-thumb" src="src/project/SaaS.jpg" alt="SaaS" />
-        <div>
+      <hr class="project-divider" aria-hidden="true" />
+
+      <article class="project-row" role="listitem">
+        <div class="project-body">
           <h2 class="project-name">RFP</h2>
           <p class="project-desc">comming soon...</p>
         </div>
       </article>
 
-      <article class="project-card">
-        <img class="project-thumb" src="src/project/sololeveling.jpg" alt="SoloLeveling thumbnail" />
-        <div>
+      <hr class="project-divider" aria-hidden="true" />
+
+      <article class="project-row" role="listitem">
+        <div class="project-body">
           <h2 class="project-name">SoloLeveling</h2>
           <p class="project-desc">This is a simple task tracker app built purely on C++ with Crow framework
             and I used SQL for the database. Used containerization technologies like Docker and Kubernetes.
@@ -58,8 +76,7 @@
           </p>
         </div>
       </article>
-    </section>
+    </div>
   </main>
-  <script src="src/js/project.obf.js"></script>
 </body>
 </html>
